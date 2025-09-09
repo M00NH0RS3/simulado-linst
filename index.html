@@ -402,7 +402,7 @@
       }
 
       lista.addEventListener('change', e => {
-        const lab = e.target?.closest?.('.alt');
+        const lab = e.target.closest('.alt');
         if (lab) {
           const group = lab.parentElement;
           group.querySelectorAll('.alt').forEach(x => x.classList.remove('sel'));
