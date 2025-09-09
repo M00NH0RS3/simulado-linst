@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="image.png" type="image/png" />
+  <meta name="theme-color" content="#38bdf8">
+  <title>Resumo – LINST</title>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("sw.js")
+        .then(() => console.log("Service Worker registrado"))
+        .catch(err => console.error("SW erro:", err));
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #0b1222f2;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #38bdf8;
+      --border: #334155;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(56, 189, 248, .15), transparent),
+        radial-gradient(1000px 600px at 120% 20%, rgba(34, 197, 94, .12), transparent), var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #0a1222;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #38bdf8, #34d399);
+      border-color: transparent;
+      color: #001018;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 16px
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-top: 0
+    }
+
+    ul {
+      margin: 10px 0 10px 20px
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: var(--accent)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1 class="nome">📘 Resumo – LINST</h1>
+      <a class="btn primary" href="index.html">Simulado - LINST</a>
+    </header>
+
+    <section class="card">
+      <h2>1) Constituição + EMEMG</h2>
+      <ul>
+        <li><span class="highlight">CF/88 art. 144 §§5º-6º:</span> CBMMG = defesa civil, força auxiliar, reserva do Exército, subordinado ao Governador.</li>
+        <li><span class="highlight">Princípios:</span> Legalidade, Impessoalidade, Moralidade, Publicidade, Eficiência (LIMPE).</li>
+        <li><span class="highlight">Const. MG art. 39 e 133:</span> PM e CBMMG são militares do Estado; defesa social inclui segurança pública e defesa civil.</li>
+        <li><span class="highlight">HC:</span> Não cabe contra punições disciplinares militares (CF, art. 142 §2º).</li>
+        <li><span class="highlight">EMEMG art. 22:</span> Veda empresa/emprego remunerado; pode gerir bens, magistério/atividade técnica compatível.</li>
+        <li><span class="highlight">Elegibilidade:</span> &lt;10 anos → afasta; &gt;10 anos → agregado; eleito → inatividade na diplomação.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>2) Organização Básica (LC 54/1999)</h2>
+      <ul>
+        <li><span class="highlight">Natureza:</span> Força auxiliar, hierarquia e disciplina, regime especial, autonomia administrativa/financeira.</li>
+        <li><span class="highlight">Subordinação:</span> Governador; Cmt-Geral com prerrogativas de Secretário de Estado.</li>
+        <li><span class="highlight">Competências:</span> Defesa civil, incêndio, perícia, busca/salvamento, PJM no que couber, incentivo a bombeiros civis.</li>
+        <li><span class="highlight">Estrutura:</span> UDG (Gab Cmt-Geral, Estado-Maior); UDI (Corregedoria, COBs, Diretorias, ABM); Execução (Bt, Cia, Pelotões).</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>3) Regulamento de Continências (RCONT)</h2>
+      <ul>
+        <li><span class="highlight">Definição:</span> Saudação militar, impessoal, parte do mais moderno.</li>
+        <li><span class="highlight">Execução:</span> Atitude, gesto, duração. Com/sem cobertura; posição de sentido; mão à pala; olhar franco.</li>
+        <li><span class="highlight">Situações:</span> Cerimônia Bandeira/Hino, interior da OM, trajes civis (continência ou verbal), cortesia em público.</li>
+        <li><span class="highlight">Bandeira:</span> Dia da Bandeira ao meio-dia: hasteamento solene. Luto nacional: meio-mastro, bandas em silêncio.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4) Ética e Disciplina (Lei 14.310/2002)</h2>
+      <ul>
+        <li><span class="highlight">Aplicação à reserva:</span> escândalo público, embriaguez fardado etc.</li>
+        <li><span class="highlight">Prescrição:</span> Art. 90 inconstitucional → TJMMG Súmula 01: prazos = 2 anos (sem exclusão), 4 (deserção), 5 (exclusão).</li>
+        <li><span class="highlight">Cancelamento:</span> 5 anos sem punição → cancelamento automático + reclassificação de conceito.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>5) Estatuto: Direitos e Vantagens</h2>
+      <ul>
+        <li><span class="highlight">Férias:</span> 25 dias úteis/ano; férias-prêmio: 3 meses/quinquênio.</li>
+        <li><span class="highlight">Dispensas:</span> Núpcias e luto: 8 dias cada.</li>
+        <li><span class="highlight">Trânsito/instalação:</span> 20 (of), 16 (ST/Sgt), 10 (Cb/Sd).</li>
+        <li><span class="highlight">Licenças:</span> Saúde, interesse particular, doença em família.</li>
+        <li><span class="highlight">Vedações:</span> Empresa/emprego remunerado; exceções: magistério/atividade técnica compatível.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>6) ADI, ADE e AADP</h2>
+      <ul>
+        <li><span class="highlight">ADI:</span> Avalia desempenho no biênio; satisfatória ≥70 pts.</li>
+        <li><span class="highlight">ADE:</span> Vantagem remuneratória; cálculo pela média de ADIs satisfatórias (não é idêntico ao da ativa).</li>
+        <li><span class="highlight">AADP:</span> Inclui TAF/ATP/TPB/tiro + disponibilidade; regras para afastamento &gt;182 dias.</li>
+        <li><span class="highlight">Revisão 2019–2020:</span> Só aplica se aumentar nota; se piorar, mantém.</li>
+        <li><span class="highlight">SIGP:</span> Até 31/12 situação lançada.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7) TAF, ATP, TPB e Tiro</h2>
+      <ul>
+        <li><span class="highlight">TAF:</span> Avaliação física anual; válido até fim do ano seguinte; exige AC até 180 dias antes.</li>
+        <li><span class="highlight">Provas:</span> Corrida/natação 12min, abdômen, barra, shuttle run, natação 75m.</li>
+        <li><span class="highlight">Dispensa:</span> Novo teste até 10 dias após cessar impedimento; se durar até 1/11 = inapto.</li>
+        <li><span class="highlight">TPB:</span> 3 provas: apto em todas=20 pts; 2=15; 1=10; 0=0.</li>
+        <li><span class="highlight">ATP:</span> Avalia conhecimentos; oficiais até capitão + todas as praças.</li>
+        <li><span class="highlight">EDP:</span> Pode substituir TAF/ATP/TPB/tiro em casos de dispensa.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>8) Previdência dos Militares</h2>
+      <ul>
+        <li><span class="highlight">Lei 13.954/2019:</span> Sistema de Proteção Social, diferente do RPPS civil.</li>
+        <li><span class="highlight">Reserva:</span> Compulsória 35 anos efetivo serviço; voluntária 35 de serviço (30 militar).</li>
+        <li><span class="highlight">Paridade/integralidade:</span> Proventos iguais aos da ativa, com revisão automática.</li>
+        <li><span class="highlight">Contribuição:</span> 8% ativos/inativos/pensionistas; pode mudar por lei ordinária (a partir de 2025).</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>

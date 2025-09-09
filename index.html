@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="image.png" type="image/png" />
+  <title>Simulado - Legislação Institucional</title>
+  <meta name="theme-color" content="#38bdf8" />
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("sw.js")
+        .then(() => console.log("Service Worker registrado"))
+        .catch((err) => console.error("SW erro:", err));
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #0b1222f2;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #38bdf8;
+      --ok: #16a34a;
+      --bad: #dc2626;
+      --border: #334155;
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(1200px 600px at 10% -10%,
+          rgba(56, 189, 248, 0.15),
+          transparent),
+        radial-gradient(1000px 600px at 120% 20%,
+          rgba(34, 197, 94, 0.12),
+          transparent),
+        var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+        "Helvetica Neue", Arial;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    header {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    header h1 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .panel {
+      padding: 16px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .chip {
+      background: #0b1328;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: #0a1222;
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: 700;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #38bdf8, #34d399);
+      border-color: transparent;
+      color: #001018;
+    }
+
+    .q {
+      padding: 16px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .q-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .q-title {
+      font-weight: 700;
+    }
+
+    .q-body {
+      margin-top: 8px;
+    }
+
+    .alt {
+      display: block;
+      margin: 0.25rem 0;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .alt input {
+      margin-right: 0.5rem;
+    }
+
+    .alt.sel {
+      border-color: #1f2937;
+      background: #0f1a33;
+    }
+
+    .status {
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    .status.ok {
+      color: var(--ok);
+    }
+
+    .status.bad {
+      color: var(--bad);
+    }
+
+    .ok-bg {
+      background: rgba(22, 163, 74, 0.12);
+      border: 1px solid rgba(22, 163, 74, 0.35);
+    }
+
+    .bad-bg {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.35);
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 12px 0 0;
+    }
+
+    .footer {
+      margin: 24px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    details {
+      background: #0b1328;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>📝 Simulado – LINST (100 questões)</h1>
+      <div class="row">
+        <span id="score" class="chip">Acertos: 0/0</span>
+        <span id="aproveitamento" class="chip">Aproveitamento: 0%</span>
+      </div>
+    </header>
+
+    <section id="exam" class="card panel">
+      <div class="row" style="justify-content: space-between">
+        <strong>Marque suas respostas e clique em <em>Verificar Tudo</em> ao final
+          para obter o resultado.</strong>
+        <details>
+          <summary>Como funciona</summary>
+          <ul>
+            <li>
+              Responda as questões de múltipla escolha e as questões de
+              verdadeiro/falso.
+            </li>
+            <li>
+              Ao verificar, a questão fica
+              <b style="color: var(--ok)">verde</b> se correta,
+              <b style="color: var(--bad)">vermelha</b> se incorreta e mostra
+              a alternativa certa.
+            </li>
+            <li>Você pode <b>exportar</b> um CSV com resultados.</li>
+          </ul>
+        </details>
+        <div class="row">
+          <button id="btnReset" class="btn">Resetar</button>
+          <button id="btnExport" class="btn">Exportar CSV</button>
+          <a class="btn primary" href="resumo.html">Resumo da Matéria</a>
+        </div>
+      </div>
+      <div id="lista"></div>
+      <button id="btnCheckAll" class="btn primary">Verificar Tudo</button>
+    </section>
+
+    <!-- <p class="footer">&copy; 2025 CFSd Hotel</p> -->
+  </div>
+
+  <script>
+    const questoes = // --- SIMULADO LINS - FÁCIL (1–34) ---
+[
+  { n: 1, enu: "O CBMMG é considerado força auxiliar e reserva do Exército, conforme a Constituição.", vf: true, correta: "V" },
+  { n: 2, enu: "Qual unidade compõe as Unidades de Direção Geral do CBMMG?", alts: ["Comando Operacional de Bombeiros", "Gabinete do Comandante-Geral", "Companhia Independente", "Seção de Serviço Social"], correta: "b" },
+  { n: 3, enu: "O Comandante-Geral do CBMMG é subordinado diretamente ao Governador do Estado.", vf: true, correta: "V" },
+  { n: 4, enu: "A que se destina a Academia de Bombeiros Militar (ABM)?", alts: ["Apenas guarda de viaturas", "Planejamento e execução de cursos de formação e aperfeiçoamento", "Gestão de alimentos operacionais", "Somente coordenação de operações de incêndio"], correta: "b" },
+  { n: 5, enu: "A continência individual pode ser prestada a qualquer hora do dia ou da noite.", vf: true, correta: "V" },
+  { n: 6, enu: "Ao encontrar um superior em trajes civis, o subordinado pode:", alts: ["Nunca saudar", "Prestar continência ou cumprimento verbal", "Fazer continência somente dentro da OM", "Cumprimentar com aperto de ombro"], correta: "b" },
+  { n: 7, enu: "A atitude, o gesto e a duração são elementos essenciais da continência.", vf: true, correta: "V" },
+  { n: 8, enu: "Quando o Hino Nacional for cantado em cerimônia religiosa, o militar participante:", alts: ["Faz continência durante toda a execução", "Permanece em atitude de respeito (sem continência)", "Sai da cerimônia", "Executa continência apenas na introdução"], correta: "b" },
+  { n: 9, enu: "Dormir em serviço está listado como transgressão disciplinar de natureza grave na Lei 14.310/2002.", vf: true, correta: "V" },
+  { n: 10, enu: "Qual das seguintes é transgressão de natureza média segundo a Lei 14.310/2002?", alts: ["Ofender outra pessoa com gesto humilhante", "Executar atividades particulares durante o serviço", "Maltratar preso sob custódia", "Usar posto para vantagem pecuniária"], correta: "b" },
+  { n: 11, enu: "Punições canceladas devem ser suprimidas do registro de alterações do militar.", vf: true, correta: "V" },
+  { n: 12, enu: "O que pode ser recompensa militar?", alts: ["Elogio", "Prisão", "Demissão", "Multa administrativa"], correta: "a" },
+  { n: 13, enu: "A suspensão disciplinar não será remunerada e pode chegar até 10 dias conforme pontuação.", vf: true, correta: "V" },
+  { n: 14, enu: "O TAF tem validade até:", alts: ["30 dias após aplicação", "Último dia do ano posterior ao da aplicação", "5 anos", "6 meses"], correta: "b" },
+  { n: 15, enu: "O TAF é aplicado anualmente a todos os bombeiros militares em serviço ativo.", vf: true, correta: "V" },
+  { n: 16, enu: "Para ser considerado APTO no TPB, o militar deve ser apto em:", alts: ["Um dos exames", "Todas as três provas", "Duas provas apenas", "Não é exigido aptidão"], correta: "b" },
+  { n: 17, enu: "A ATP terá validade até o último dia do ano posterior à sua aplicação.", vf: true, correta: "V" },
+  { n: 18, enu: "A ATP exige aprovação mínima de:", alts: ["50%", "60%", "70%", "80%"], correta: "b" },
+  { n: 19, enu: "A AADP é anual e mensurada na data do aniversário de inclusão do militar.", vf: true, correta: "V" },
+  { n: 20, enu: "Um militar reprovado na ATP receberá, no critério Habilidades Profissionais da AADP, pontuação equivalente a:", alts: ["0 pontos", "3 pontos", "10 pontos", "15 pontos"], correta: "b" },
+  { n: 21, enu: "A ADI considera as provas realizadas no biênio (ano do período e ano anterior) para composição.", vf: true, correta: "V" },
+  { n: 22, enu: "O ADE constitui vantagem remuneratória e seu valor depende do número de ADIs satisfatórias. Qual é um percentual possível conforme Resolução?", alts: ["1% para 3 desempenhos satisfatórios", "6% para 3 desempenhos satisfatórios", "100% para 30 desempenhos", "0% sempre"], correta: "b" },
+  { n: 23, enu: "Considera-se desempenho satisfatório quando o resultado da ADI for igual ou superior a 70 pontos.", vf: true, correta: "V" },
+  { n: 24, enu: "Quantos pontos o TPB vale na composição da ADI para aptidão nas três provas?", alts: ["5 pontos", "10 pontos", "20 pontos", "30 pontos"], correta: "c" },
+  { n: 25, enu: "O EDP pode substituir o ATP, TAF e/ou tiro prático para militares dispensados que não realizaram alguma prova.", vf: true, correta: "V" },
+  { n: 26, enu: "Em relação à disponibilidade para o trabalho (AADP), qual situação é descontada?", alts: ["Licença por casamento (núpcias)", "Licença por motivo de doença em pessoa da família (quando afasta totalmente)", "Folga semanal", "Curso de aperfeiçoamento aprovado"], correta: "b" },
+  { n: 27, enu: "A primeira AADP de militares recém-designados tem tratamento particular se a designação ocorrer após 30 de junho.", vf: true, correta: "V" },
+  { n: 28, enu: "Se o militar ficar 5 anos sem punição, o que ocorre segundo o Código?", alts: ["Demissão automática", "Cancelamento automático de penas disciplinares e reclassificação do conceito em certos termos", "Rebaixamento de posto", "Multa aplicada"], correta: "b" },
+  { n: 29, enu: "A Lei 14.310 prevê circunstâncias atenuantes e agravantes para apuração da transgressão.", vf: true, correta: "V" },
+  { n: 30, enu: "Qual órgão exerce auditoria de prevenção, controle e gestão na corporação, subordinado ao Comandante-Geral?", alts: ["Estado-Maior", "Auditoria", "Diretoria de Logística", "Ajudância Geral"], correta: "b" },
+  { n: 31, enu: "A Ajudância Geral é unidade autônoma de execução de apoio e é subordinada ao Comando-Geral.", vf: true, correta: "V" },
+  { n: 32, enu: "Uma das competências do CBMMG é:", alts: ["Elaboração de leis federais", "Coordenação de ações de defesa civil e combate a incêndio", "Controle do sistema judiciário estadual", "Emissão de passaportes"], correta: "b" },
+  { n: 33, enu: "A falta ao serviço está prevista como transgressão disciplinar grave.", vf: true, correta: "V" },
+  { n: 34, enu: "A quem compete elaborar diretrizes e ordens do Comando às Unidades de Direção Intermediária e de Execução?", alts: ["Prefeitura municipal", "Estado-Maior do Corpo de Bombeiros", "Gabinete do Governador", "Ministério da Defesa"], correta: "b" },
+// --- SIMULADO LINS - MÉDIO (35–67) ---
+
+  { n: 35, enu: "As Unidades de Direção Intermediária incluem a Corregedoria, Comando Especializado e Diretorias.", vf: true, correta: "V" },
+  { n: 36, enu: "O Estado-Maior tem entre suas competências:", alts: ["Cozinhar para as tropas", "Estudo, planejamento, coordenação e fiscalização das atividades da Corporação", "Vender equipamentos", "Emissão de carteira de motorista"], correta: "b" },
+  { n: 37, enu: "A regra do aperto de mão e iniciativa de saudação é responsabilidade do subordinado.", vf: false, correta: "F" },
+  { n: 38, enu: "Conforme RCONT, a continência individual é desfeita quando o superior:", alts: ["Atinge a distância de três passos e ultrapassa o mais moderno de um passo", "Atinge a distância de dez passos", "Aparenta mais de 2 metros", "Está a 100 metros"], correta: "a" },
+  { n: 39, enu: "Em deslocamento com mãos ocupadas, o militar faz a continência com movimento de cabeça.", vf: true, correta: "V" },
+  { n: 40, enu: "O que ocorre quando o Hino Nacional é tocado em cerimônia religiosa?", alts: ["O militar faz continência normalmente", "O militar permanece em atitude de respeito, sem continência", "O militar deve cantar alto", "É obrigatório executar continência apenas na introdução"], correta: "b" },
+  { n: 41, enu: "A classificação disciplinar tem conceitos 'A', 'B' e 'C' e pontuações associadas.", vf: true, correta: "V" },
+  { n: 42, enu: "Para infração grave, a faixa de pontos é:", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "c" },
+  { n: 43, enu: "A reincidência é considerada circunstância agravante no julgamento disciplinar.", vf: true, correta: "V" },
+  { n: 44, enu: "A demissão de militar da ativa com menos de 3 anos de efetivo serviço será precedida de:", alts: ["CPAD apenas para coronéis", "Processo Administrativo-Disciplinar Sumário (PADS) em casos previstos", "Demissão sumária sem processo", "Votação popular"], correta: "b" },
+  { n: 45, enu: "A reforma disciplinar compulsória exige, em geral, pelo menos 15 anos de efetivo serviço.", vf: true, correta: "V" },
+  { n: 46, enu: "Entre as recompensas listadas na Lei estão:", alts: ["Elogio e nota meritória", "Prisão e multa", "Suspensão e advertência", "Perda de graduação"], correta: "a" },
+  { n: 47, enu: "A pontuação positiva para elogio individual é de 5 pontos cada, segundo a Lei.", vf: true, correta: "V" },
+  { n: 48, enu: "A perda da graduação consiste em:", alts: ["Promoção automática", "Desligamento dos quadros da IME", "Concessão de medalha", "Aumento salarial"], correta: "b" },
+  { n: 49, enu: "O militar da reserva remunerada está sujeito a algumas transgressões previstas no art. 13 (incisos II, III e VI).", vf: true, correta: "V" },
+  { n: 50, enu: "A suspensão disciplinar tem parâmetros em função da pontuação apurada; por exemplo, 29–30 pontos pode gerar até quantos dias?", alts: ["1 dia", "3 dias", "8 dias", "10 dias"], correta: "d" },
+  { n: 51, enu: "O Art. 90 da Lei 14.310 que fixava prazos prescricionais foi considerado inconstitucional pelo TJMMG (Súmula 01), sendo aplicados prazos distintos.", vf: true, correta: "V" },
+  { n: 52, enu: "Qual é o prazo prescricional para infrações disciplinares que não acarretam exclusão da IME, segundo TJMMG?", alts: ["120 dias", "1 ano", "2 anos", "10 anos"], correta: "c" },
+  { n: 53, enu: "Após dois anos de transferência para a inatividade, militar classificado no conceito 'C' é automaticamente reclassificado no conceito 'B' com zero ponto.", vf: true, correta: "V" },
+  { n: 54, enu: "O TTE (Treinamento Técnico Específico) é recurso para militares que:", alts: ["São aprovados no ATP", "Foram reprovados na ATP e requerem convocação para TTE", "Nunca prestaram serviço militar", "Estão de folga"], correta: "b" },
+  { n: 55, enu: "A ATP avalia conhecimentos básicos para o desempenho das atividades e é aplicada a oficiais até capitão e a todas as praças.", vf: true, correta: "V" },
+  { n: 56, enu: "Se o militar é inapto na Avaliação Clínica por dispensa até 1º de novembro, o EDP pode ser computado para compor ADI/AADP.", alts: ["Não pode ser utilizado", "Pode ser computado para compor ADI/AADP conforme regras", "Elimina o militar do quadro", "Substitui automaticamente a ADI por nota máxima"], correta: "b" },
+  { n: 57, enu: "A AADP aplica-se a todos os bombeiros militares, exceto coronéis (último posto).", vf: true, correta: "V" },
+  { n: 58, enu: "No critério Aptidão Física da AADP, a pontuação será:", alts: ["A melhor nota apenas", "A média das notas de todos os TAF daquele ano", "Somente o TAF anual dentro do período avaliatório", "A pior nota registrada"], correta: "c" },
+  { n: 59, enu: "A disponibilidade para o trabalho sofre desconto por exercício de cargo público civil temporário.", vf: true, correta: "V" },
+  { n: 60, enu: "O que acontece se a revisão de AADP (2019/2020) resultar em nota inferior?", alts: ["A nova nota é aplicada de qualquer forma", "Mantém-se a nota anterior, salvo discordância com Resolução", "O militar é automaticamente promovido", "Todas as avaliações são anuladas"], correta: "b" },
+  { n: 61, enu: "Até 31 de dezembro de cada ano, a situação de cada militar deve estar lançada no SIGP.", vf: true, correta: "V" },
+  { n: 62, enu: "Para composição da ADI, quais provas podem ser consideradas em substituição no caso de afastamento ou impedimento?", alts: ["TAF/ATP/Tiro do ano de início do período ou do ano anterior", "Provas de outra corporação sem equivalência", "Exames médicos civis sem homologação", "Nenhuma substituição é permitida"], correta: "a" },
+  { n: 63, enu: "A Resolução 807/2018 trata de ADI e ADE (conceitos e valores).", vf: true, correta: "V" },
+  { n: 64, enu: "O percentual máximo do ADE para 30 desempenhos satisfatórios é:", alts: ["10%", "30%", "60%", "100%"], correta: "c" },
+  { n: 65, enu: "No TPB, apto em duas das três provas confere 15 pontos para composição da ADI.", vf: true, correta: "V" },
+  { n: 66, enu: "Conforme a Resolução, o conceito 'A' tem pontuação aproximada de:", alts: ["0 pontos", "15 pontos", "30 pontos", "-50 pontos"], correta: "c" },
+  { n: 67, enu: "O militar que ingressa no CBMMG e preenche condições para ADE terá conceito disciplinar considerado em grau máximo nos três primeiros anos, salvo punição.", vf: true, correta: "V" },
+// --- SIMULADO LINS - DIFÍCIL (68–100) ---
+
+  { n: 68, enu: "Sobre acumulação de cargos, marque a alternativa correta:", alts: ["Militares da ativa podem exercer livremente qualquer emprego público remunerado", "A acumulação é vedada salvo hipóteses constitucionais e compatibilidade prevista em lei", "Militares podem ser vereadores e exercer ambas funções sem afastamento", "Não há qualquer vedação normativa"], correta: "b" },
+  { n: 69, enu: "A aplicação de atenuantes pode reduzir a pontuação negativa atribuída a uma transgressão disciplinar.", vf: true, correta: "V" },
+  { n: 70, enu: "Qual é a faixa de pontos para infração média?", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "b" },
+  { n: 71, enu: "O procedimento para demissão de militar com menos de 3 anos pode ser precedido por PADS quando se tratar de reincidência em falta grave para classificado no conceito 'C'.", vf: true, correta: "V" },
+  { n: 72, enu: "Sobre a reforma disciplinar compulsória (art. 32), marque o correto:", alts: ["Pode ocorrer sem tempo mínimo de serviço", "É afastamento compulsório por faltas graves ou reiteradas, com 15 anos de efetivo serviço", "Concede aumento salarial ao militar", "É aplicada a todo militar com 10 anos de serviço"], correta: "b" },
+  { n: 73, enu: "O militar pode ter penas canceladas e, a partir do cancelamento, as punições são suprimidas do registro.", vf: true, correta: "V" },
+  { n: 74, enu: "No julgamento, a quantificação de atenuantes e agravantes está prevista em qual artigo?", alts: ["Art. 1", "Art. 16–18", "Art. 90", "Art. 200"], correta: "b" },
+  { n: 75, enu: "Em caso de afastamento por licença médica total, o tempo será descontado do critério disponibilidade para o trabalho na AADP.", vf: true, correta: "V" },
+  { n: 76, enu: "Art. 29-C da Resolução usa como referência para aptidão física e habilidades profissionais:", alts: ["TAF e ATP do ano anterior", "Testes civis locais", "Provas escolares", "Apenas avaliação subjetiva do superior"], correta: "a" },
+  { n: 77, enu: "O trancamento de matrícula por acidente em serviço ou moléstia profissional aplica regras específicas de aferição de AADP.", vf: true, correta: "V" },
+  { n: 78, enu: "Na ADI, biênio significa:", alts: ["Dois anos — o período avaliatório e o anterior", "Três meses seguidos", "Somente o próprio ano", "Cinco anos consecutivos"], correta: "a" },
+  { n: 79, enu: "As novas regras de AADP só se aplicam se o resultado for superior ao registrado anteriormente.", vf: true, correta: "V" },
+  { n: 80, enu: "Se o militar retorna até 30 de agosto no ano em que concorre à promoção:", alts: ["Aplica-se art. 29-C — AADP confeccionada em 31 de agosto", "Perde a elegibilidade", "Invalida toda AADP", "Afastamento permanente"], correta: "a" },
+  { n: 81, enu: "O ADE é calculado unicamente pela remuneração do posto, sem considerar ADIs satisfatórias.", vf: false, correta: "F" },
+  { n: 82, enu: "Sobre o cálculo do ADE, marque a combinação correta:", alts: ["3 ADIs = 6%; 10 = 20%; 30 = 60%", "3 = 1%; 10 = 5%; 30 = 10%", "3 = 100%; 10 = 200%", "Não há níveis pré-estabelecidos"], correta: "a" },
+  { n: 83, enu: "Um militar que ingressou após a Emenda Estadual pode ter direito ao ADE.", vf: true, correta: "V" },
+  { n: 84, enu: "Na composição da ADI, se o TPB tiver aptidão em apenas uma das três provas, a pontuação é:", alts: ["0 pontos", "10 pontos", "15 pontos", "20 pontos"], correta: "b" },
+  { n: 85, enu: "A percepção do ADE na inatividade sempre será o mesmo percentual que o militar tinha na ativa.", vf: false, correta: "F" },
+  { n: 86, enu: "Em relação ao TAF, qual NÃO é procedimento usual?", alts: ["Avaliação clínica até 180 dias antes", "Validade até o fim do ano seguinte", "TAF aplicado somente a coronéis", "Reaplicação após impedimento"], correta: "c" },
+  { n: 87, enu: "Se o impedimento que tirou o militar do TAF durar além da data limite, ele pode ficar inapto no ciclo.", vf: true, correta: "V" },
+  { n: 88, enu: "No caso de gestante ou licença maternidade em TPB/ATP/Tiro:", alts: ["Pode-se usar nota da última aferição para compor critérios", "Deve realizar todas as provas imediatamente", "Suspensão eterna da exigência", "Desligamento automático"], correta: "a" },
+  { n: 89, enu: "O militar com Atestado de Origem (AO) não terá descontado o tempo da licença em disponibilidade para o trabalho.", vf: true, correta: "V" },
+  { n: 90, enu: "A quem compete revisar AADP de 2019/2020 em situações especiais?", alts: ["Unidades competentes", "Tribunal de Contas", "Ministério Público", "Secretaria de Educação"], correta: "a" },
+  { n: 91, enu: "O EDP pode ser utilizado na AADP além da ADI, quando justificável.", vf: true, correta: "V" },
+  { n: 92, enu: "Se o militar for inapto em todas as provas do TPB, a pontuação para ADI será:", alts: ["20 pontos", "15 pontos", "10 pontos", "0 pontos"], correta: "d" },
+  { n: 93, enu: "A pontuação negativa mínima para infração leve é em torno de 5 pontos-base.", vf: true, correta: "V" },
+  { n: 94, enu: "No julgamento da transgressão, devem ser consideradas: antecedentes, causas, natureza dos fatos e consequências. Isso corresponde a qual artigo?", alts: ["Art. 1", "Art. 16", "Art. 100", "Nenhum artigo"], correta: "b" },
+  { n: 95, enu: "A direção da Corporação elabora a programação financeira anual, folha de pagamentos e decide sobre situação funcional do pessoal.", vf: true, correta: "V" },
+  { n: 96, enu: "As Unidades de Direção Geral incluem:", alts: ["Gabinete do Comandante-Geral e Estado-Maior", "Apenas a Academia de Bombeiros", "Prefeituras municipais", "ONGs"], correta: "a" },
+  { n: 97, enu: "As atividades de auditoria estão subordinadas diretamente ao Comandante-Geral.", vf: true, correta: "V" },
+  { n: 98, enu: "A competência do CAT (Centro de Atividades Técnicas) inclui:", alts: ["Fiscalizar normas de segurança contra incêndio e pânico", "Vender sistemas privados", "Aplicar provas escolares", "Administrar concursos públicos do Estado"], correta: "a" },
+  { n: 99, enu: "A estrutura de Comandos Operacionais de Bombeiros divide-se regionalmente (ex.: 1º COB BH, 2º COB Uberlândia).", vf: true, correta: "V" },
+  { n: 100, enu: "Qual benefício está previsto nas aulas como vantagem?", alts: ["Férias-prêmio de 3 meses a cada quinquênio", "Férias ilimitadas para oficiais", "Imóvel funcional para todos", "Vantagem de 200% do soldo"], correta: "a" }
+]
+
+
+
+
+    const lista = document.getElementById('lista');
+
+    function render() {
+      lista.innerHTML = '';
+      for (const q of questoes) {
+        const div = document.createElement('div');
+        div.className = 'q';
+        div.id = `q${q.n}`;
+        div.innerHTML = `
+                <div class="q-head">
+                  <div class="q-title"><span class="chip">${q.n}</span> ${q.enu}</div>
+                  <button class="btn" data-action="verificar">Verificar</button>
+
+                </div>
+                <div class="q-body" role="group" aria-label="Questão ${q.n}"></div>
+                <div class="status"></div>
+              `;
+
+        const body = div.querySelector('.q-body');
+        if (q.vf) {
+          ['V', 'F'].forEach(val => {
+            const label = document.createElement('label');
+            label.className = 'alt';
+            label.innerHTML = `<input type="radio" name="q${q.n}" value="${val}"> ${val}`;
+            body.appendChild(label);
+          });
+        } else {
+          const letras = ['a', 'b', 'c', 'd'];
+          q.alts.forEach((txt, idx) => {
+            const letra = letras[idx];
+            const label = document.createElement('label');
+            label.className = 'alt';
+            label.innerHTML = `<input type="radio" name="q${q.n}" value="${letra}"> (${letra}) ${txt}`;
+            body.appendChild(label);
+          });
+        }
+        lista.appendChild(div);
+      }
+
+      lista.addEventListener('change', e => {
+        const lab = e.target?.closest?.('.alt');
+        if (lab) {
+          const group = lab.parentElement;
+          group.querySelectorAll('.alt').forEach(x => x.classList.remove('sel'));
+          lab.classList.add('sel');
+        }
+      });
+
+      lista.addEventListener('click', e => {
+        const btn = e.target.closest('button[data-action="verificar"]');
+        if (!btn) return;
+        const card = btn.closest('.q');
+        const n = Number(card.id.replace('q', ''));
+        verificar(n);
+        atualizarPlacar();
+      });
+    }
+
+    function verificar(n) {
+      const q = questoes.find(x => x.n === n);
+      const card = document.getElementById(`q${n}`);
+      const status = card.querySelector('.status');
+      const marcada = card.querySelector('input:checked');
+      card.classList.remove('ok-bg', 'bad-bg');
+      status.className = 'status';
+      if (!marcada) { status.textContent = 'Não respondida.'; return false; }
+      const val = marcada.value.toLowerCase();
+      const ok = (q.vf ? val.toUpperCase() : val) === q.correta;
+      if (ok) {
+        card.classList.add('ok-bg');
+        status.classList.add('ok');
+        status.textContent = '✔ Correto';
+      } else {
+        card.classList.add('bad-bg');
+        status.classList.add('bad');
+        if (q.vf) {
+          status.textContent = `✖ Incorreto. Correto: ${q.correta}`;
+        } else {
+          const letras = ['a', 'b', 'c', 'd'];
+          const idx = letras.indexOf(q.correta);
+          const textoCorreto = q.alts[idx];
+          status.textContent = `✖ Incorreto. Correto: (${q.correta}) ${textoCorreto}`;
+        }
+      }
+      return ok;
+    }
+
+    function verificarTudo() {
+      let withKey = 0, correct = 0;
+      for (const q of questoes) {
+        withKey++;
+        if (verificar(q.n)) correct++;
+      }
+      atualizarPlacar(correct, withKey);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function atualizarPlacar(forceCorrect, forceTotal) {
+      let total = forceTotal ?? questoes.length;
+      let correct = forceCorrect ?? Array.from(document.querySelectorAll('.status.ok')).length;
+      document.getElementById('score').textContent = `Acertos: ${correct}/${total}`;
+      const ap = total ? Math.round((correct / total) * 100) : 0;
+      document.getElementById('aproveitamento').textContent = `Aproveitamento: ${ap}%`;
+    }
+
+    function resetar() {
+      document.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
+      document.querySelectorAll('.alt').forEach(l => l.classList.remove('sel'));
+      document.querySelectorAll('.q').forEach(c => c.classList.remove('ok-bg', 'bad-bg'));
+      document.querySelectorAll('.status').forEach(s => { s.className = 'status'; s.textContent = ''; });
+      atualizarPlacar(0, questoes.length);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function exportCSV() {
+      const linhas = [["#", "Enunciado", "Resposta", "Gabarito", "Resultado"]];
+      for (const q of questoes) {
+        const card = document.getElementById(`q${q.n}`);
+        const marcada = card.querySelector('input:checked');
+        let resp = marcada ? marcada.value.toUpperCase() : '';
+        let gab = q.vf ? q.correta : q.correta.toUpperCase();
+        let resultado = card.querySelector('.status').classList.contains('ok') ? 'Correto' : (marcada ? 'Incorreto' : 'Não respondida');
+        linhas.push([q.n, q.enu.replaceAll('\n', ' ').trim(), resp, gab, resultado]);
+      }
+      const csv = linhas.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'resultado_simulado_dh.csv'; a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1500);
+    }
+
+    // Render e binds iniciais
+    render();
+    atualizarPlacar(0, questoes.length);
+
+    document.getElementById('btnCheckAll').addEventListener('click', verificarTudo);
+    document.getElementById('btnReset').addEventListener('click', resetar);
+    document.getElementById('btnExport').addEventListener('click', exportCSV);
+  </script>
+</body>
+
+</html>
