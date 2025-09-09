@@ -254,7 +254,7 @@
 
   <script>
     const questoes = [
-      // --- SIMULADO LINS - FÁCIL (1–34) ---
+  // --- FÁCIL (1–34) ---
   { n: 1, enu: "O CBMMG é considerado força auxiliar e reserva do Exército, conforme a Constituição.", vf: true, correta: "V" },
   { n: 2, enu: "Qual unidade compõe as Unidades de Direção Geral do CBMMG?", alts: ["Comando Operacional de Bombeiros", "Gabinete do Comandante-Geral", "Companhia Independente", "Seção de Serviço Social"], correta: "b" },
   { n: 3, enu: "O Comandante-Geral do CBMMG é subordinado diretamente ao Governador do Estado.", vf: true, correta: "V" },
@@ -290,15 +290,15 @@
   { n: 33, enu: "A falta ao serviço está prevista como transgressão disciplinar grave.", vf: true, correta: "V" },
   { n: 34, enu: "A quem compete elaborar diretrizes e ordens do Comando às Unidades de Direção Intermediária e de Execução?", alts: ["Prefeitura municipal", "Estado-Maior do Corpo de Bombeiros", "Gabinete do Governador", "Ministério da Defesa"], correta: "b" },
 
-// --- SIMULADO LINS - MÉDIO (35–67) ---
+  // --- MÉDIO (35–67) ---
   { n: 35, enu: "As Unidades de Direção Intermediária incluem a Corregedoria, Comando Especializado e Diretorias.", vf: true, correta: "V" },
   { n: 36, enu: "O Estado-Maior tem entre suas competências:", alts: ["Cozinhar para as tropas", "Estudo, planejamento, coordenação e fiscalização das atividades da Corporação", "Vender equipamentos", "Emissão de carteira de motorista"], correta: "b" },
-  { n: 37, enu: "A regra do aperto de mão e iniciativa de saudação é responsabilidade do subordinado.", vf: false, correta: "F" },
+  { n: 37, enu: "A regra do aperto de mão e iniciativa de saudação é responsabilidade do subordinado.", vf: true, correta: "V" },
   { n: 38, enu: "Conforme RCONT, a continência individual é desfeita quando o superior:", alts: ["Atinge a distância de três passos e ultrapassa o mais moderno de um passo", "Atinge a distância de dez passos", "Aparenta mais de 2 metros", "Está a 100 metros"], correta: "a" },
   { n: 39, enu: "Em deslocamento com mãos ocupadas, o militar faz a continência com movimento de cabeça.", vf: true, correta: "V" },
   { n: 40, enu: "O que ocorre quando o Hino Nacional é tocado em cerimônia religiosa?", alts: ["O militar faz continência normalmente", "O militar permanece em atitude de respeito, sem continência", "O militar deve cantar alto", "É obrigatório executar continência apenas na introdução"], correta: "b" },
-  { n: 41, enu: "A classificação disciplinar tem conceitos 'A', 'B' e 'C' e pontuações associadas.", vf: true, correta: "V" },
-  { n: 42, enu: "Para infração grave, a faixa de pontos é:", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "c" },
+  { n: 41, enu: "A classificação disciplinar tem conceitos \"A\", \"B\" e \"C\" e pontuações associadas.", vf: true, correta: "V" },
+  { n: 42, enu: "Para infração grave, a faixa de pontos é:", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "b" },
   { n: 43, enu: "A reincidência é considerada circunstância agravante no julgamento disciplinar.", vf: true, correta: "V" },
   { n: 44, enu: "A demissão de militar da ativa com menos de 3 anos de efetivo serviço será precedida de:", alts: ["CPAD apenas para coronéis", "Processo Administrativo-Disciplinar Sumário (PADS) em casos previstos", "Demissão sumária sem processo", "Votação popular"], correta: "b" },
   { n: 45, enu: "A reforma disciplinar compulsória exige, em geral, pelo menos 15 anos de efetivo serviço.", vf: true, correta: "V" },
@@ -308,57 +308,57 @@
   { n: 49, enu: "O militar da reserva remunerada está sujeito a algumas transgressões previstas no art. 13 (incisos II, III e VI).", vf: true, correta: "V" },
   { n: 50, enu: "A suspensão disciplinar tem parâmetros em função da pontuação apurada; por exemplo, 29–30 pontos pode gerar até quantos dias?", alts: ["1 dia", "3 dias", "8 dias", "10 dias"], correta: "d" },
   { n: 51, enu: "O Art. 90 da Lei 14.310 que fixava prazos prescricionais foi considerado inconstitucional pelo TJMMG (Súmula 01), sendo aplicados prazos distintos.", vf: true, correta: "V" },
-  { n: 52, enu: "Qual é o prazo prescricional para infrações disciplinares que não acarretam exclusão da IME, segundo TJMMG?", alts: ["120 dias", "1 ano", "2 anos", "10 anos"], correta: "c" },
-  { n: 53, enu: "Após dois anos de transferência para a inatividade, militar classificado no conceito 'C' é automaticamente reclassificado no conceito 'B' com zero ponto.", vf: true, correta: "V" },
+  { n: 52, enu: "Qual é o prazo prescricional para infrações disciplinares que não acarretam exclusão da IME?", alts: ["120 dias", "1 ano", "2 anos", "10 anos"], correta: "b" },
+  { n: 53, enu: "Após dois anos de transferência para a inatividade, militar classificado no conceito “C” é automaticamente reclassificado no conceito “B” com zero ponto.", vf: true, correta: "V" },
   { n: 54, enu: "O TTE (Treinamento Técnico Específico) é recurso para militares que:", alts: ["São aprovados no ATP", "Foram reprovados na ATP e requerem convocação para TTE", "Nunca prestaram serviço militar", "Estão de folga"], correta: "b" },
   { n: 55, enu: "A ATP avalia conhecimentos básicos para o desempenho das atividades e é aplicada a oficiais até capitão e a todas as praças.", vf: true, correta: "V" },
-  { n: 56, enu: "Se o militar é inapto na Avaliação Clínica por dispensa até 1º de novembro, o EDP pode ser computado para compor ADI/AADP.", alts: ["Não pode ser utilizado", "Pode ser computado para compor ADI/AADP conforme regras", "Elimina o militar do quadro", "Substitui automaticamente a ADI por nota máxima"], correta: "b" },
+  { n: 56, enu: "Se o militar é inapto na Avaliação Clínica por dispensa que perdure até 1º de novembro, o EDP:", alts: ["Não pode ser utilizado", "Pode ser computado para compor ADI/AADP conforme regras", "Elimina o militar do quadro", "Substitui automaticamente a ADI por nota máxima"], correta: "b" },
   { n: 57, enu: "A AADP aplica-se a todos os bombeiros militares, exceto coronéis (último posto).", vf: true, correta: "V" },
-  { n: 58, enu: "No critério Aptidão Física da AADP, a pontuação será:", alts: ["A melhor nota apenas", "A média das notas de todos os TAF daquele ano", "Somente o TAF anual dentro do período avaliatório", "A pior nota registrada"], correta: "c" },
+  { n: 58, enu: "No critério Aptidão Física da AADP, se houver mais de um TAF no ano, é computado:", alts: ["A melhor nota apenas", "A média das notas de todos os TAF daquele ano", "Somente o TAF anual dentro do período avaliatório", "A pior nota registrada"], correta: "b" },
   { n: 59, enu: "A disponibilidade para o trabalho sofre desconto por exercício de cargo público civil temporário.", vf: true, correta: "V" },
-  { n: 60, enu: "O que acontece se a revisão de AADP (2019/2020) resultar em nota inferior?", alts: ["A nova nota é aplicada de qualquer forma", "Mantém-se a nota anterior, salvo discordância com Resolução", "O militar é automaticamente promovido", "Todas as avaliações são anuladas"], correta: "b" },
+  { n: 60, enu: "O que acontece se a revisão de AADP (2019/2020) resultar em nota inferior?", alts: ["A nova nota é aplicada de qualquer forma", "Mantém-se a nota anterior, salvo discordância com a Resolução 808/2018", "O militar é automaticamente promovido", "Todas as avaliações são anuladas"], correta: "b" },
   { n: 61, enu: "Até 31 de dezembro de cada ano, a situação de cada militar deve estar lançada no SIGP.", vf: true, correta: "V" },
-  { n: 62, enu: "Para composição da ADI, quais provas podem ser consideradas em substituição no caso de afastamento ou impedimento?", alts: ["TAF/ATP/Tiro do ano de início do período ou do ano anterior", "Provas de outra corporação sem equivalência", "Exames médicos civis sem homologação", "Nenhuma substituição é permitida"], correta: "a" },
+  { n: 62, enu: "Para composição da ADI, quais provas podem ser consideradas em substituição no caso de afastamento ou impedimento?", alts: ["TAF/ATP/Tiro do ano de início do período avaliatório ou do ano anterior", "Provas de outra corporação sem equivalência", "Exames médicos civis sem homologação", "Nenhuma substituição é permitida"], correta: "a" },
   { n: 63, enu: "A Resolução 807/2018 trata de ADI e ADE (conceitos e valores).", vf: true, correta: "V" },
-  { n: 64, enu: "O percentual máximo do ADE para 30 desempenhos satisfatórios é:", alts: ["10%", "30%", "60%", "100%"], correta: "c" },
+  { n: 64, enu: "O percentual máximo do ADE para 30 desempenhos satisfatórios é:", alts: ["10%", "30%", "60%", "100%"], correta: "d" },
   { n: 65, enu: "No TPB, apto em duas das três provas confere 15 pontos para composição da ADI.", vf: true, correta: "V" },
-  { n: 66, enu: "Conforme a Resolução, o conceito 'A' tem pontuação aproximada de:", alts: ["0 pontos", "15 pontos", "30 pontos", "-50 pontos"], correta: "c" },
+  { n: 66, enu: "O conceito “A” tem pontuação aproximada de:", alts: ["0 pontos", "15 pontos", "30 pontos (ou ≥25 para conceito A)", "-50 pontos"], correta: "c" },
   { n: 67, enu: "O militar que ingressa no CBMMG e preenche condições para ADE terá conceito disciplinar considerado em grau máximo nos três primeiros anos, salvo punição.", vf: true, correta: "V" },
 
-// --- SIMULADO LINS - DIFÍCIL (68–100) ---
-  { n: 68, enu: "Sobre acumulação de cargos, marque a alternativa correta:", alts: ["Militares da ativa podem exercer livremente qualquer emprego público remunerado", "A acumulação é vedada salvo hipóteses constitucionais e compatibilidade prevista em lei", "Militares podem ser vereadores e exercer ambas funções sem afastamento", "Não há qualquer vedação normativa"], correta: "b" },
+  // --- DIFÍCIL (68–100) ---
+  { n: 68, enu: "Sobre acumulação de cargos, marque a alternativa correta:", alts: ["Militares da ativa podem exercer livremente qualquer emprego público remunerado", "A acumulação é vedada salvo hipóteses constitucionais previstas no art. 37, XVI e compatibilidade prevista por lei", "Militares podem ser vereadores e exercer ambas as funções concomitantemente sem afastamento", "Não há qualquer vedação normativa"], correta: "b" },
   { n: 69, enu: "A aplicação de atenuantes pode reduzir a pontuação negativa atribuída a uma transgressão disciplinar.", vf: true, correta: "V" },
-  { n: 70, enu: "Qual é a faixa de pontos para infração média?", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "b" },
-  { n: 71, enu: "O procedimento para demissão de militar com menos de 3 anos pode ser precedido por PADS quando se tratar de reincidência em falta grave para classificado no conceito 'C'.", vf: true, correta: "V" },
-  { n: 72, enu: "Sobre a reforma disciplinar compulsória (art. 32), marque o correto:", alts: ["Pode ocorrer sem tempo mínimo de serviço", "É afastamento compulsório por faltas graves ou reiteradas, com 15 anos de efetivo serviço", "Concede aumento salarial ao militar", "É aplicada a todo militar com 10 anos de serviço"], correta: "b" },
-  { n: 73, enu: "O militar pode ter penas canceladas e, a partir do cancelamento, as punições são suprimidas do registro.", vf: true, correta: "V" },
-  { n: 74, enu: "No julgamento, a quantificação de atenuantes e agravantes está prevista em qual artigo?", alts: ["Art. 1", "Art. 16–18", "Art. 90", "Art. 200"], correta: "b" },
-  { n: 75, enu: "Em caso de afastamento por licença médica total, o tempo será descontado do critério disponibilidade para o trabalho na AADP.", vf: true, correta: "V" },
-  { n: 76, enu: "Art. 29-C da Resolução usa como referência para aptidão física e habilidades profissionais:", alts: ["TAF e ATP do ano anterior", "Testes civis locais", "Provas escolares", "Apenas avaliação subjetiva do superior"], correta: "a" },
-  { n: 77, enu: "O trancamento de matrícula por acidente em serviço ou moléstia profissional aplica regras específicas de aferição de AADP.", vf: true, correta: "V" },
-  { n: 78, enu: "Na ADI, biênio significa:", alts: ["Dois anos — o período avaliatório e o anterior", "Três meses seguidos", "Somente o próprio ano", "Cinco anos consecutivos"], correta: "a" },
-  { n: 79, enu: "As novas regras de AADP só se aplicam se o resultado for superior ao registrado anteriormente.", vf: true, correta: "V" },
-  { n: 80, enu: "Se o militar retorna até 30 de agosto no ano em que concorre à promoção:", alts: ["Aplica-se art. 29-C — AADP confeccionada em 31 de agosto", "Perde a elegibilidade", "Invalida toda AADP", "Afastamento permanente"], correta: "a" },
-  { n: 81, enu: "O ADE é calculado unicamente pela remuneração do posto, sem considerar ADIs satisfatórias.", vf: false, correta: "F" },
-  { n: 82, enu: "Sobre o cálculo do ADE, marque a combinação correta:", alts: ["3 ADIs = 6%; 10 = 20%; 30 = 60%", "3 = 1%; 10 = 5%; 30 = 10%", "3 = 100%; 10 = 200%", "Não há níveis pré-estabelecidos"], correta: "a" },
-  { n: 83, enu: "Um militar que ingressou após a Emenda Estadual pode ter direito ao ADE.", vf: true, correta: "V" },
-  { n: 84, enu: "Na composição da ADI, se o TPB tiver aptidão em apenas uma das três provas, a pontuação é:", alts: ["0 pontos", "10 pontos", "15 pontos", "20 pontos"], correta: "b" },
-  { n: 85, enu: "A percepção do ADE na inatividade sempre será o mesmo percentual que o militar tinha na ativa.", vf: false, correta: "F" },
-  { n: 86, enu: "Em relação ao TAF, qual NÃO é procedimento usual?", alts: ["Avaliação clínica até 180 dias antes", "Validade até o fim do ano seguinte", "TAF aplicado somente a coronéis", "Reaplicação após impedimento"], correta: "c" },
-  { n: 87, enu: "Se o impedimento que tirou o militar do TAF durar além da data limite, ele pode ficar inapto no ciclo.", vf: true, correta: "V" },
-  { n: 88, enu: "No caso de gestante ou licença maternidade em TPB/ATP/Tiro:", alts: ["Pode-se usar nota da última aferição para compor critérios", "Deve realizar todas as provas imediatamente", "Suspensão eterna da exigência", "Desligamento automático"], correta: "a" },
-  { n: 89, enu: "O militar com Atestado de Origem (AO) não terá descontado o tempo da licença em disponibilidade para o trabalho.", vf: true, correta: "V" },
-  { n: 90, enu: "A quem compete revisar AADP de 2019/2020 em situações especiais?", alts: ["Unidades competentes", "Tribunal de Contas", "Ministério Público", "Secretaria de Educação"], correta: "a" },
+  { n: 70, enu: "Qual é a faixa de pontos sugerida como base para atribuição por infração média?", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "b" },
+  { n: 71, enu: "O procedimento para demissão de militar com menos de 3 anos pode ser precedido por PADS quando se tratar de reincidência em falta grave para classificado no conceito “C”.", vf: true, correta: "V" },
+  { n: 72, enu: "Sobre a reforma disciplinar compulsória (art. 32), marque o correto:", alts: ["Pode ocorrer sem tempo mínimo de serviço", "Afastamento por reiterado cometimento de faltas ou gravidade, com pelo menos 15 anos de serviço", "Concede aumento salarial", "Aplicada automaticamente a todos com 10 anos"], correta: "b" },
+  { n: 73, enu: "O militar pode ter penas e sanções canceladas e, a partir do ato de cancelamento, as punições suprimidas do registro.", vf: true, correta: "V" },
+  { n: 74, enu: "A quantificação das atenuantes e agravantes utiliza soma de pontos positivos e negativos. Para o cálculo, qual artigo disciplina este procedimento?", alts: ["Art. 1", "Art. 16–18 (julgamento e pontuação)", "Art. 90 apenas", "Art. 200"], correta: "b" },
+  { n: 75, enu: "Em caso de afastamento por licença médica com afastamento total, o tempo será descontado do critério disponibilidade para o trabalho na AADP.", vf: true, correta: "V" },
+  { n: 76, enu: "Art. 29-C da Resolução que trata da AADP usa como referência para aptidão física e habilidades profissionais:", alts: ["TAF e ATP do ano anterior", "Testes civis locais", "Provas escolares do ensino médio", "Apenas avaliação subjetiva do superior"], correta: "a" },
+  { n: 77, enu: "O trancamento de matrícula por acidente em serviço ou moléstia profissional aplica as regras específicas de aferição de AADP previstas na Resolução.", vf: true, correta: "V" },
+  { n: 78, enu: "A ADI utiliza biênio para considerar provas. Biênio significa:", alts: ["Dois anos — o início do período avaliatório e o ano anterior", "Três meses seguidos", "Somente o próprio ano do período", "Cinco anos consecutivos"], correta: "a" },
+  { n: 79, enu: "A Resolução prevê que as novas regras de AADP só serão aplicadas se o resultado for superior ao registrado anteriormente.", vf: true, correta: "V" },
+  { n: 80, enu: "Se o militar retornar do afastamento até 30 de agosto no ano em que concorre à promoção, aplica-se:", alts: ["O previsto no art. 29-C — confecção da AADP na data de 31 de agosto", "Perda imediata de elegibilidade para promoção", "Invalidação de toda a AADP", "Afastamento permanente"], correta: "a" },
+  { n: 81, enu: "O ADE é calculado unicamente pela remuneração do posto, sem considerar número de ADIs satisfatórias.", vf: true, correta: "F" },
+  { n: 82, enu: "Sobre o cálculo do ADE e percentuais, marque a combinação correta:", alts: ["3 ADIs satisfatórias = 6%; 10 = 20%; 30 = 60%", "3 = 1%; 10 = 5%; 30 = 10%", "3 = 100%; 10 = 200%", "Não há níveis pré-estabelecidos"], correta: "a" },
+  { n: 83, enu: "Um militar que ingressou após a Emenda Estadual citada pode ter direito ao ADE conforme o artigo correspondente.", vf: true, correta: "V" },
+  { n: 84, enu: "Na composição da ADI, o TPB é aferido em pontos. Pontos para aptidão em apenas uma das três provas:", alts: ["0 pontos", "10 pontos", "15 pontos", "20 pontos"], correta: "b" },
+  { n: 85, enu: "A percepção do ADE na inatividade sempre será o mesmo percentual que o militar tinha na ativa.", vf: true, correta: "F" },
+  { n: 86, enu: "Em relação ao TAF, marque a alternativa que NÃO é procedimento usual:", alts: ["Avaliação clínica prévia (AC) até 180 dias antes do TAF", "Validade do TAF até o último dia do ano posterior", "TAF aplicado somente a coronéis", "Possibilidade de reaplicação após impedimento conforme prazos"], correta: "c" },
+  { n: 87, enu: "Se o impedimento que tirou o militar do TAF durar além de determinada data, ele pode ficar inapto naquele ciclo.", vf: true, correta: "V" },
+  { n: 88, enu: "TPB/ATP/TAF e tiro prático têm regras especiais quando o militar está gestante ou em licença maternidade — alternativa possível:", alts: ["Aplicar nota da última aferição para os critérios afetados", "Exigir que realize todas as provas imediatamente", "Suspensão eterna da exigência", "Desligamento automático do quadro"], correta: "a" },
+  { n: 89, enu: "O militar que estiver amparado em Atestado de Origem (AO) não terá descontado o tempo que durar a licença para fins de disponibilidade para o trabalho.", vf: true, correta: "V" },
+  { n: 90, enu: "A quem compete revisar as AADP confeccionadas nos anos 2019 e 2020 dos militares enquadrados nas situações especiais?", alts: ["Unidades (competentes) segundo a Resolução", "Tribunal de Contas estadual", "Ministério Público federal", "Secretaria de Educação"], correta: "a" },
   { n: 91, enu: "O EDP pode ser utilizado na AADP além da ADI, quando justificável.", vf: true, correta: "V" },
-  { n: 92, enu: "Se o militar for inapto em todas as provas do TPB, a pontuação para ADI será:", alts: ["20 pontos", "15 pontos", "10 pontos", "0 pontos"], correta: "d" },
-  { n: 93, enu: "A pontuação negativa mínima para infração leve é em torno de 5 pontos-base.", vf: true, correta: "V" },
-  { n: 94, enu: "No julgamento da transgressão, devem ser consideradas: antecedentes, causas, natureza dos fatos e consequências. Isso corresponde a qual artigo?", alts: ["Art. 1", "Art. 16", "Art. 100", "Nenhum artigo"], correta: "b" },
-  { n: 95, enu: "A direção da Corporação elabora a programação financeira anual, folha de pagamentos e decide sobre situação funcional do pessoal.", vf: true, correta: "V" },
-  { n: 96, enu: "As Unidades de Direção Geral incluem:", alts: ["Gabinete do Comandante-Geral e Estado-Maior", "Apenas a Academia de Bombeiros", "Prefeituras municipais", "ONGs"], correta: "a" },
+  { n: 92, enu: "Se o militar é considerado inapto em todas as provas do TPB, quantos pontos o TPB soma para a ADI?", alts: ["20 pontos", "15 pontos", "10 pontos", "Zero pontos"], correta: "d" },
+  { n: 93, enu: "A pontuação negativa mínima para infração leve está em torno de 5 pontos-base antes de atenuantes/aggravantes.", vf: true, correta: "V" },
+  { n: 94, enu: "No julgamento da transgressão, devem ser consideradas: antecedentes, causas, natureza dos fatos e consequências. Isso corresponde a qual artigo de referência?", alts: ["Art. 1 (definição)", "Art. 16 (julgamento e análise)", "Art. 100 (financeiro)", "Nenhum artigo trata disso"], correta: "b" },
+  { n: 95, enu: "A direção da Corporação (Comando-Geral) elabora a programação financeira anual, folha de pagamentos e decide sobre a situação funcional do pessoal militar.", vf: true, correta: "V" },
+  { n: 96, enu: "As Unidades de Direção Geral compõem o Comando-Geral e incluem:", alts: ["Gabinete do Comandante-Geral e Estado-Maior", "Apenas a Academia de Bombeiros", "Prefeituras municipais", "Organizações não governamentais"], correta: "a" },
   { n: 97, enu: "As atividades de auditoria estão subordinadas diretamente ao Comandante-Geral.", vf: true, correta: "V" },
-  { n: 98, enu: "A competência do CAT (Centro de Atividades Técnicas) inclui:", alts: ["Fiscalizar normas de segurança contra incêndio e pânico", "Vender sistemas privados", "Aplicar provas escolares", "Administrar concursos públicos do Estado"], correta: "a" },
-  { n: 99, enu: "A estrutura de Comandos Operacionais de Bombeiros divide-se regionalmente (ex.: 1º COB BH, 2º COB Uberlândia).", vf: true, correta: "V" },
-  { n: 100, enu: "Qual benefício está previsto nas aulas como vantagem?", alts: ["Férias-prêmio de 3 meses a cada quinquênio", "Férias ilimitadas para oficiais", "Imóvel funcional para todos", "Vantagem de 200% do soldo"], correta: "a" }
+  { n: 98, enu: "A competência do CAT (Centro de Atividades Técnicas) inclui:", alts: ["Pesquisar e fiscalizar normas de segurança contra incêndio e pânico", "Vender sistemas de alarme privados", "Aplicar provas civis de educação básica", "Administrar todos os concursos públicos do Estado"], correta: "a" },
+  { n: 99, enu: "A estrutura de Comandos Operacionais de Bombeiros divide-se regionalmente.", vf: true, correta: "V" },
+  { n: 100, enu: "Em termos de benefícios/vantagens, qual alternativa é citada nas aulas como possível?", alts: ["Férias-prêmio de 3 meses a cada quinquênio (conforme regra estadual)", "Férias ilimitadas para oficiais", "Concessão automática de imóvel funcional a todos", "Vantagem de 200% do soldo sem critério"], correta: "a" } 
 ];
 
     
@@ -402,7 +402,7 @@
       }
 
       lista.addEventListener('change', e => {
-        const lab = e.target.closest('.alt');
+        const lab = e.target?.closest?.('.alt');
         if (lab) {
           const group = lab.parentElement;
           group.querySelectorAll('.alt').forEach(x => x.classList.remove('sel'));
