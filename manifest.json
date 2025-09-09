@@ -1,6 +1,6 @@
 {
-  "name": "Simulado PG",
-  "short_name": "PG",
+  "name": "Simulado LINST",
+  "short_name": "LINST",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#0f172a",
