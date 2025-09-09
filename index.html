@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="image.png" type="image/png" />
-  <title>Simulado - Legislação Institucional</title>
+  <title>Simulado - Policiamento de Guarda</title>
   <meta name="theme-color" content="#38bdf8" />
 
   <script>
@@ -211,9 +211,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>📝 Simulado – LINST (100 questões)</h1>
+      <h1>📝 Simulado – PG (100 questões)</h1>
       <div class="row">
-        <a class="btn primary" href="https://m00nh0rs3.github.io/simulados-cbmmg-2025/">Simulados</a>
         <span id="score" class="chip">Acertos: 0/0</span>
         <span id="aproveitamento" class="chip">Aproveitamento: 0%</span>
       </div>
@@ -253,8 +252,8 @@
   </div>
 
   <script>
-    const questoes = [ // --- SIMULADO LINS - FÁCIL (1–34) ---
-
+    const questoes = [
+      // --- SIMULADO LINS - FÁCIL (1–34) ---
   { n: 1, enu: "O CBMMG é considerado força auxiliar e reserva do Exército, conforme a Constituição.", vf: true, correta: "V" },
   { n: 2, enu: "Qual unidade compõe as Unidades de Direção Geral do CBMMG?", alts: ["Comando Operacional de Bombeiros", "Gabinete do Comandante-Geral", "Companhia Independente", "Seção de Serviço Social"], correta: "b" },
   { n: 3, enu: "O Comandante-Geral do CBMMG é subordinado diretamente ao Governador do Estado.", vf: true, correta: "V" },
@@ -289,8 +288,8 @@
   { n: 32, enu: "Uma das competências do CBMMG é:", alts: ["Elaboração de leis federais", "Coordenação de ações de defesa civil e combate a incêndio", "Controle do sistema judiciário estadual", "Emissão de passaportes"], correta: "b" },
   { n: 33, enu: "A falta ao serviço está prevista como transgressão disciplinar grave.", vf: true, correta: "V" },
   { n: 34, enu: "A quem compete elaborar diretrizes e ordens do Comando às Unidades de Direção Intermediária e de Execução?", alts: ["Prefeitura municipal", "Estado-Maior do Corpo de Bombeiros", "Gabinete do Governador", "Ministério da Defesa"], correta: "b" },
-// --- SIMULADO LINS - MÉDIO (35–67) ---
 
+// --- SIMULADO LINS - MÉDIO (35–67) ---
   { n: 35, enu: "As Unidades de Direção Intermediária incluem a Corregedoria, Comando Especializado e Diretorias.", vf: true, correta: "V" },
   { n: 36, enu: "O Estado-Maior tem entre suas competências:", alts: ["Cozinhar para as tropas", "Estudo, planejamento, coordenação e fiscalização das atividades da Corporação", "Vender equipamentos", "Emissão de carteira de motorista"], correta: "b" },
   { n: 37, enu: "A regra do aperto de mão e iniciativa de saudação é responsabilidade do subordinado.", vf: false, correta: "F" },
@@ -324,8 +323,8 @@
   { n: 65, enu: "No TPB, apto em duas das três provas confere 15 pontos para composição da ADI.", vf: true, correta: "V" },
   { n: 66, enu: "Conforme a Resolução, o conceito 'A' tem pontuação aproximada de:", alts: ["0 pontos", "15 pontos", "30 pontos", "-50 pontos"], correta: "c" },
   { n: 67, enu: "O militar que ingressa no CBMMG e preenche condições para ADE terá conceito disciplinar considerado em grau máximo nos três primeiros anos, salvo punição.", vf: true, correta: "V" },
-// --- SIMULADO LINS - DIFÍCIL (68–100) ---
 
+// --- SIMULADO LINS - DIFÍCIL (68–100) ---
   { n: 68, enu: "Sobre acumulação de cargos, marque a alternativa correta:", alts: ["Militares da ativa podem exercer livremente qualquer emprego público remunerado", "A acumulação é vedada salvo hipóteses constitucionais e compatibilidade prevista em lei", "Militares podem ser vereadores e exercer ambas funções sem afastamento", "Não há qualquer vedação normativa"], correta: "b" },
   { n: 69, enu: "A aplicação de atenuantes pode reduzir a pontuação negativa atribuída a uma transgressão disciplinar.", vf: true, correta: "V" },
   { n: 70, enu: "Qual é a faixa de pontos para infração média?", alts: ["1–10", "11–20", "21–30", "31–40"], correta: "b" },
@@ -361,8 +360,7 @@
   { n: 100, enu: "Qual benefício está previsto nas aulas como vantagem?", alts: ["Férias-prêmio de 3 meses a cada quinquênio", "Férias ilimitadas para oficiais", "Imóvel funcional para todos", "Vantagem de 200% do soldo"], correta: "a" }
 ];
 
-
-
+    ];
 
     const lista = document.getElementById('lista');
 
